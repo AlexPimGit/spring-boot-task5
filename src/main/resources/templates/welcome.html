@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>welcome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p th:text="${message} + '!'"></p>
+<p th:text="'defaultValue for Message = '+${message}"></p>
+<br>
+<p>Р.Л. Стивенсон</p>
+<p>Лето в стране настало,<br>
+    Вереск опять цветет.<br>
+    Но некому готовить<br>
+    Вересковый мед.</p>
+<p th:text="${greeting}+${they}">
+<p/>
+<a th:href="@{/login}">Login</a>
+<br><br>
+<a th:href="@{/403}">403</a>
+<br><br>
+<!--<div>Список найденных пользователей</div>-->
+<!--<form action="#" th:action="@{/filter}" th:object="${messages}" method="post">-->
+<!--<table border="0" cellpadding="10">-->
+<!--    <tr>-->
+<!--        <td>Name:</td>-->
+<!--&lt;!&ndash;        <td><input type="text" th:field="*{user.name}" id="name" ></td>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" th:field="*{name}" id="name" placeholder="Name">&ndash;&gt;-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td colspan="2">-->
+<!--            <button type="submit">Find</button>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--</form>-->
+<br><br>
+<div th:switch="${users}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user:${users}">
+                <td th:text="${user.userName}"></td>
+                <td th:text="${user.email}"></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signUp">Add a new user</a></p>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
