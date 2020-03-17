@@ -9,23 +9,13 @@
 <div align="center">
     <h1>Add User</h1>
     <br/>
-    <form action="#" th:action="@{/admin/addUser}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/addUser}" th:object="${user}"
+          method="post">
+
         <table border="0" cellpadding="10">
             <tr>
                 <td>Name:</td>
-                <td><input type="text" th:field="*{name}"/></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" th:field="*{password}"/></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" th:field="*{position}"/></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="text" th:field="*{age}"/></td>
+                <td><input type="text" th:field="*{userName}"/></td>
             </tr>
             <tr>
                 <td>Email:</td>

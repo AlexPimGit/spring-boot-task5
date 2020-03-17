@@ -44,9 +44,6 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Password</th>
-                <th>Position</th>
-                <th>Age</th>
                 <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -54,23 +51,16 @@
             </thead>
             <tbody>
             <tr th:each="user:${users}">
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.password}"></td>
-                <td th:text="${user.position}"></td>
-                <td th:text="${user.age}"></td>
+                <td th:text="${user.userName}"></td>
                 <td th:text="${user.email}"></td>
-                <td><a th:href="@{/admin/edit/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{/admin/delete/{id}(id=${user.id})}">Delete</a></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p>Добавить пользователя
-        <form action="#" th:action="@{/admin/addUser}" method="get">
-    <p><input type="submit" value="add"/></p>
-    </form>
+    <p><a href="/signUp">Add a new user</a></p>
 </div>
-<p>Выйти
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
