@@ -1,11 +1,10 @@
-package by.shurikpreproject.springboottask5.dao;
+package by.shurikpreproject.springboottask5.service;
 
 import by.shurikpreproject.springboottask5.model.User;
 
 import java.util.List;
 
-
-public interface UserDao {
+public interface UserService {
     void addUser(User user);
 
     void updateUser(User user);
@@ -14,11 +13,9 @@ public interface UserDao {
 
     User getUserById(Long id);
 
-    List listUser();
+    List<User> listUser();
 
     User findByUsername(String name);
-
-    User findByUserEmail(String email);
 
     List findListByUsername(String filter);
 }
