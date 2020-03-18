@@ -75,7 +75,7 @@ public class UserController {
             return "updateUser";
         }
 
-        userService.addUser(user);
+        userService.updateUser(user);
         model.addAttribute("users", userService.listUser());
         return "welcome";
     }
@@ -86,5 +86,4 @@ public class UserController {
         model.addAttribute("users", userService.listUser());
         return "welcome";
     }
-
 }

@@ -33,7 +33,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        entityManager.refresh(user);
+//        entityManager.refresh(user);
+        entityManager.merge(user);
         LOGGER.log(Level.INFO, "User successfully updated. User details: " + user);
     }
 
