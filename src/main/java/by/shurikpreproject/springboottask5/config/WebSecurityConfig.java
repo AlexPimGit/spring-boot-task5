@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/", "/home", "/test").permitAll()
+                .antMatchers("/", "/home").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated();
     }

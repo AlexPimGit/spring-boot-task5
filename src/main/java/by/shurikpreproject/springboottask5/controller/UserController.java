@@ -4,13 +4,11 @@ package by.shurikpreproject.springboottask5.controller;
 import by.shurikpreproject.springboottask5.model.User;
 import by.shurikpreproject.springboottask5.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -23,6 +21,19 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @RequestMapping(path = "/user", method = RequestMethod.GET)
+    public Model getUserPage(Model model) {
+        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userService.findByUsername(authUser.getName()));
+        return model;
+    }
+
+    @RequestMapping("/user/{id}")
+    public String showUserForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", userService.getUserById(id));
+        return "user";
     }
 
     @GetMapping("/admin/welcome")
